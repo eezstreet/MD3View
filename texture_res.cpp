@@ -954,7 +954,7 @@ bool searchForPath( LPCSTR texturePath, char *foundPath )
 	// I hate this fucking inconsistant with or without extension logic that changes every project
 	if (file_exists(texnamePNG))
 	{
-		strcpy( foundPath, texnamePNG );
+		strcpy( foundPath, texnamePNG);
 	}
 	else
 	if (file_exists(texnameJPG))

@@ -246,24 +246,7 @@ bool loadmdl_original( char *filename, LPCSTR psLOD0Filename, gl_model* pLOD1, g
 //
 static FbxManager* ptManager = NULL;
 extern GLuint loadTexture( LPCSTR texturepath );
-
-/*FbxMatrix ComputeTotalMatrix(FbxNode* Node, FbxScene* ptScene)
-{
-	FbxMatrix Geometry;
-	FbxVector4 Translation, Rotation, Scaling;
-
-	Translation = Node->GetGeometricTranslation(FbxNode::eSourcePivot);
-	Rotation = Node->GetGeometricRotation(FbxNode::eSourcePivot);
-	Scaling = Node->GetGeometricScaling(FbxNode::eSourcePivot);
-	Geometry.SetTRS(Translation, Rotation, Scaling);
-
-	FbxMatrix& GlobalTransform = ptScene->GetEvaluator()->GetNodeGlobalTransform(Node);
-
-	KFbxXMatrix TotalMatrix;
-	TotalMatrix = GlobalTransform * Geometry;
-
-	return TotalMatrix;
-}*/
+bool searchForPath( LPCSTR texturePath, char *foundPath );
 
 bool loadfbx( char *filename )
 {
@@ -426,6 +409,7 @@ bool loadfbx( char *filename )
 					}
 					else
 						ftex = (FbxFileTexture*)lLayeredTexture->GetSrcObject<FbxTexture>(0);
+					strcpy(m->sTextureName, ftex->GetFileName());
 					m->bindings[j] = loadTexture(ftex->GetFileName());
 					break; // should only ever be one binding
 				}

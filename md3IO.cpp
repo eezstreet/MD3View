@@ -522,7 +522,9 @@ bool ExportThisModel( LPCSTR psFilename, gl_model* pModel, bool bExportAsMD3)
 							{			
 								case MODTYPE_MD3:
 									
-									strcpy(sName, pMesh->sTextureName);
+									strncpy(	sName, pMesh->sTextureName, sizeof(sName) > strlen(pMesh->sTextureName) 
+												? strlen(pMesh->sTextureName) : sizeof(sName)
+												);
 									break;
 
 								case MODTYPE_MDR:
