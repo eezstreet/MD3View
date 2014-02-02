@@ -1,0 +1,8 @@
+*.sdf
+*.opensdf
+*.user
+*.suo
+UpgradeLog.xml
+[Dd]ebug/*
+ipch/*
+[Rr]elease/*
